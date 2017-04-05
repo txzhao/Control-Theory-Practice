@@ -11,7 +11,7 @@ F_lag = (Ti*s + 1)/(Ti*s + r);
 
 % calculate required phase for lead compensator
 [~, p_lag] = bode(G*F_lag, wc);
-p_lead = 180 - abs(pm - p_lag);
+p_lead = 180 - (p_lag - pm);
 
 % calculate parameters of lead compensator
 beta = (1 - sin(deg2rad(p_lead)))/(1 + sin(deg2rad(p_lead)));
