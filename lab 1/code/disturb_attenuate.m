@@ -10,8 +10,8 @@ L = wc/s;
 Fy = L/G;
 
 % approximation to make controller proper
-p1 = 30*wc;
-p2 = 30*wc;
+p1 = 10*wc;
+p2 = 10*wc;
 Fy_prop = Fy*p1*p2/((s + p1)*(s + p2));
 
 % plot the result
@@ -32,12 +32,12 @@ step(minreal(Gd/(1 + Fy_prop*G)));
 
 %% exe 4.2.2
 % define integral controller
-wi = 0.5*wc;
+wi = 0.7*wc;
 Fy = (s + wi)*Gd/(s*G);
 
 % approximation to make controller proper
-p1 = 5*wc;
-p2 = 5*wc;
+p1 = 10*wc;
+p2 = 10*wc;
 Fy_prop = Fy*p1*p2/((s + p1)*(s + p2));
 
 % plot the result
