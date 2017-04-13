@@ -58,17 +58,14 @@ step(minreal(Gd/(1 + Fy_prop*G)));
 
 %% exe 4.2.3
 % define parameters
-pm = 30;
 wd = wc + 6;
-tau = 0.12;
+tau = 0.1;
 
 % construct lead compensator
-[~, p_lag] = bode(Fy_prop*G, wd);
-p_lead = 180 - (p_lag - pm);
+p_lead = 20;
 beta = (1 - sin(deg2rad(p_lead)))/(1 + sin(deg2rad(p_lead)));
 Td = 1/(wd*sqrt(beta));
-F_lead = (Td*s + 1)/(beta*Td*s + 1);
-K = 1/abs(evalfr(Fy_prop*G*F_lead, j*wd));
+K = sqrt(beta)/abs(evalfr(Fy_prop*G, j*wd));
 F_lead = K*(Td*s + 1)/(beta*Td*s + 1);
 
 % obtain Fy and Fr
