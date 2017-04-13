@@ -1,7 +1,7 @@
 % initialize parameters
 pm = 30;
 wc = 0.4;
-r = 0;
+r = 0.001;
 Ti = 10/wc;
 
 % define G(s) and F_lag(s)
