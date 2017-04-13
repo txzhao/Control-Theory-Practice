@@ -80,11 +80,20 @@ bode(minreal(Fy*G/(1 + Fy*G)));
 
 figure(8)
 step(minreal(Fr*Fy*G/(1 + Fy*G)));
+sys = minreal(Fr*Fy*G/(1 + Fy*G));
+S = stepinfo(sys);
+rt = S.RiseTime;
+overshoot = S.Overshoot;
 
 figure(9)
 step(minreal(Gd/(1 + Fy*G)));
 
+figure(10)
+subplot(2,1,1)
+step(minreal(Fy*Fr/(1 + Fy*G)));
+subplot(2,1,2)
+step(minreal(Fy*Gd/(1 + Fy*G)));
 
-
-
+figure(11)
+bode(Fy*G)
 
