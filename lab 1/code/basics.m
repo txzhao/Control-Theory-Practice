@@ -2,7 +2,7 @@
 pm = 30;
 wc = 0.4;
 r = 0;
-Ti = 1;     % for the case pm=50, Ti needs to increase
+Ti = 10/wc;
 
 % define G(s) and F_lag(s)
 s = tf('s');
@@ -11,13 +11,13 @@ F_lag = (Ti*s + 1)/(Ti*s + r);
 
 % calculate required phase for lead compensator
 [~, p_lag] = bode(G*F_lag, wc);
-p_lead = 180 - (p_lag - pm);
+p_lead = pm - (p_lag + 180) + 6;
 
 % calculate parameters of lead compensator
 beta = (1 - sin(deg2rad(p_lead)))/(1 + sin(deg2rad(p_lead)));
 Td = 1/(wc*sqrt(beta));
 F_lead = (Td*s + 1)/(beta*Td*s + 1);
-K = 1/abs(evalfr(G*F_lag*F_lead, j*wc)); 
+K = sqrt(beta)/abs(evalfr(G, j*wc)); 
 
 % obtain lead-lag controller and closed-loop system
 F_lead = K*F_lead;
