@@ -10,7 +10,7 @@ G = nonminphase;
 G0_mp = dcgain(G) % Steady State Matrix
 RGA_mp = G0_mp .* (inv(G0_mp))'
 
-% %% Static Decoupling
+%% Static Decoupling
 % disp('Exercise 3.1.1:');
 % W1 = inv(G0_mp)
 % G_tilde = G * W1;
@@ -129,28 +129,28 @@ sigma(T);
 legend('T');
 grid on;
 
-% %% Glover-McFarlane robust loop-shaping
-% disp('Exercise 3.3.1:');
-% L0 = minreal(G * W1 * F_tilde)
-% figure(7);
-% bode(L0);
-% grid on;
-% 
-% disp('Exercise 3.3.2:');
-% alpha = 1.1;
-% [Fr, gama] = rloop(L0, alpha);
-% disp(['gama = ', num2str(gama)]);
-% F = minreal(W1 * F_tilde * Fr)
-% 
-% disp('Exercise 3.3.3:');
-% S = inv((eye(2) + G) * F);
-% figure(8);
-% subplot(1, 2, 1);
-% sigma(S);
-% legend('S');
-% grid on;
-% T = minreal(S * G * F);
-% subplot(1, 2, 2);
-% sigma(T);
-% legend('T');
-% grid on;
+%% Glover-McFarlane robust loop-shaping
+disp('Exercise 3.3.1:');
+L0 = minreal(G * W1 * F_tilde)
+figure(7);
+bode(L0);
+grid on;
+ 
+disp('Exercise 3.3.2:');
+alpha = 1.1;
+[Fr, gama] = rloop(L0, alpha);
+disp(['gama = ', num2str(gama)]);
+F = minreal(W1 * F_tilde * Fr)
+ 
+disp('Exercise 3.3.3:');
+S = inv((eye(2) + G) * F);
+figure(8);
+subplot(1, 2, 1);
+sigma(S);
+legend('S');
+grid on;
+T = minreal(S * G * F);
+subplot(1, 2, 2);
+sigma(T);
+legend('T');
+grid on;
