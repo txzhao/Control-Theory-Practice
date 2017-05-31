@@ -10,9 +10,6 @@ title('Closed Loop Command Response:Inputs - Minimum Phase');
 legend('u1', 'u2');
 grid on;
 
-
-
-
 figure(13);
 plot(yout);
 title('Closed Loop Command Response:Outputs - Non-Minimum Phase');
